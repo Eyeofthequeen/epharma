@@ -1,0 +1,62 @@
+<div class="base-form">
+    <form [formGroup]="form" class="form form--vertical" (keydown.enter)="submit($event)">
+        <h1 class="form__title">{{ title }}</h1>
+
+        <ng-content /> <!-- Sert à l'affichage au besoin -->
+
+        <label *ngFor="let field of fields" [ngClass]="{'invisible': field.typeHTML === 'hidden'}">
+            {{ field.label }}
+            <ng-template [ngIf]="field.type === 'checkbox'">
+                <div formGroupName="{{ field.key }}" class="group-checkbox">
+                    <div *ngFor="let option of field.options | keyvalue" class="line-checkbox">
+                        <input class="text--normal" id="{{ option.key }}" type="checkbox" formControlName="{{ option.key }}">
+                        {{ option.value }}
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template [ngIf]="field.type === 'selection'">
+                <select class="text--normal" id="{{ field.key }}" formControlName="{{ field.key }}">
+                    <option *ngFor="let choice of field.choices" [ngValue]="choice">{{ choice }}</option>
+                </select>
+            </ng-template>
+
+            <ng-template [ngIf]="field.type === 'textarea'">
+                <textarea class="text--normal" id="{{ field.key }}" rows="8" cols="50" [(ngModel)]="field.value" formControlName="{{ field.key }}"></textarea>
+            </ng-template>
+
+            <ng-template [ngIf]="field.type === 'localisation'">
+                <div class="field-with-icon">
+                    <input  class="text--normal" id="{{ field.key }}" type="text" [(ngModel)]="field.value" formControlName="{{ field.key }}">
+                    <img class="icon--small" (click)="generatePartialAddress()" src="/assets/images/locate.svg" alt="localiser">
+                </div>
+            </ng-template>
+
+            <ng-template [ngIf]="field.type === 'slider'">
+                ( {{ field.value }} )
+                <div class="slidecontainer">
+                    <input class="slidecontainer__slider" type="range" min="1" max="300" [(ngModel)]="field.value" id="{{ field.key }}" formControlName="{{ field.key }}">
+                </div>
+            </ng-template>
+
+            <ng-template [ngIf]="field.typeHTML !== ''">
+                <input  class="text--normal" id="{{ field.key }}" type="{{ field.typeHTML }}" [(ngModel)]="field.value" formControlName="{{ field.key }}">
+            </ng-template>
+        </label>
+        <div class="buttons">
+            <button class="button text--normal" (click)="cancel($event)">
+                Annuler
+            </button>
+            <button
+                [disabled]="!form.valid"
+                [ngClass]="{'button--deactivated': !form.valid}"
+                class="button text--normal"
+                type="submit"
+                (click)="submit($event)"
+            >
+                {{ action }}
+            </button>
+        </div>
+    </form>
+</div>
+    

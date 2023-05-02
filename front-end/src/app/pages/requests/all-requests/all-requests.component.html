@@ -1,0 +1,46 @@
+<div class="title">
+    <h1 class="text--title-page">Requêtes</h1>
+</div>
+
+<div class="container-sub-title">
+    <button (click)="launch()" class="button button--with-add-icon text--normal">Requête</button>
+</div>
+
+<app-table
+  [headers]="headers"
+  [objets]="partialRequests"
+  [action]="consult"
+  [keysToIgnore]="keysToIgnore"
+  (onFilter)="handleFilter($event)"
+  (notifierAction)="consultingRequest($event)"
+/>
+
+<ng-template  [ngIf]="consultingForm.isTriggered()">
+    <app-form [title]="'Requête'" [fields]="consultingForm.fields" [action]="consultingForm.action" (OnSubmit)="closing()" (OnCancel)="consultingForm.reset()">
+        <div class="drug-request">
+            <div class="drug-request__drug-infos">
+                <p class="text--big">{{ currentDrugRequest?.drug?.name }}</p>
+                <p>{{ currentDrugRequest?.drug?.type }} - {{ currentDrugRequest?.drug?.concentration }}</p>
+                <p>x{{ currentDrugRequest?.quantity }}</p>
+            </div>
+            <div class="drug-request--align-end">
+                <p class="text--big">{{ currentDrugRequest?.pharmacy?.name }}</p>
+                <p>{{ currentDrugRequest?.pharmacy?.address?.line }}</p>
+                <p>{{ currentDrugRequest?.pharmacy?.address?.apartment }}</p>
+                <p>{{ currentDrugRequest?.pharmacy?.address?.province }} {{ currentDrugRequest?.pharmacy?.address?.city }} {{ currentDrugRequest?.pharmacy?.address?.postalCode }}</p>
+                <p>{{ currentDrugRequest?.pharmacy?.address?.country }}</p>
+            </div>
+        </div>
+        <div *ngIf="!currentDrugRequest?.response">
+            <b>En attente d'une réponse de la pharmacie...</b>
+        </div>
+    </app-form>
+</ng-template>
+
+<ng-template  [ngIf]="queryForm.isTriggered()">
+    <app-form [title]="'Requête'" [fields]="queryForm.fields" [action]="queryForm.action" (OnSubmit)="save($event)" (OnCancel)="cancel()">
+        <div class="notice">
+            <p>La requête se fera sur un environ de {{ km() }}km. Vous pouvez modifier ce paramètre dans votre <a [routerLink]="['/profile']">profil</a>.</p>
+        </div>
+    </app-form>
+</ng-template>

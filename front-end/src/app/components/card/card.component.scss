@@ -1,0 +1,60 @@
+@import "../../../styles.scss";
+
+.card {
+    margin: map-get($relations, close-friend);
+    padding: map-get($relations, close-friend);
+    background-color: map-get($colorpalet, noir);
+    color: white;
+    width: 320px;
+
+    .title {
+        display: flex;
+        align-items: center;
+        gap: map-get($relations, bff);
+
+        &__name {
+
+            &--details {
+                font-family: 'Inria serif';
+                margin: 0px;
+            }
+        }
+    }
+
+    &__description {
+        font-family: 'Arial';
+        
+        h3, p {
+            margin-bottom: map-get($relations, close-friend);
+        }
+        
+        p {
+            font-family: 'Mulish';
+        }
+    }
+
+    &__informations {
+        border-top: solid 1px white;
+        display: flex;
+        gap: map-get($relations, friend);
+        padding-top: map-get($relations, close-friend);
+
+
+        &--with-icon {
+            display: flex;
+            align-items: center;
+            gap: map-get($relations, bff);  
+        }
+    }
+
+    &__request {
+        text-align: end;
+        
+        button {
+            cursor: pointer;
+            border: none;
+            background-color: white;
+            padding: map-get($relations, close-friend);
+        }
+    }
+}

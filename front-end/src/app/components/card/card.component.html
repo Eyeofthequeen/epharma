@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="title">
+        <img class="icon--big" src="/assets/images/{{getIcon()}}" alt="getType()">
+        <div class="title__name text--very-big">
+            {{ drug.name }}
+            <p class="title__name--details text--small">
+                {{ getType() }} - {{ drug.concentration }}
+            </p>
+        </div>
+    </div>
+    <div class="card__description">
+        <h3>Description</h3>
+        <p class="text--normal">{{ drug.description }}</p>
+    </div>
+    <div class="card__informations" *ngIf="allowedMoreInfo()">
+        <div class="card__informations--with-icon">
+            <img class="icon--normal" src="/assets/images/quantite.svg" alt="quantité">
+            {{ drug.total }}
+        </div>
+        <div class="card__informations--with-icon">
+            <img class="icon--normal" src="/assets/images/prix.svg" alt="prix">
+            {{ drug.price }}
+        </div>
+    </div>
+    <div class="card__request" *ngIf="allowedDrugRequest()">
+        <button class="text--normal" (click)="request()">Requête</button>
+    </div>
+</div>

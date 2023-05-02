@@ -1,0 +1,36 @@
+@import "../../../styles.scss";
+
+.tableau {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: map-get($relations, friend);
+
+    &__entete {
+        text-align: left;
+        cursor: pointer;
+        padding: map-get($relations, close-friend) 0;
+
+        img {
+            padding-left: map-get($relations, lover);
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        .chevron--actif {
+            height: 8px;
+            transform: rotate(180deg);
+        }
+    }
+
+    &__cellules:hover {
+        background-color: map-get($colorpalet, gris-pale);
+    }
+    
+    &__cellule {
+        &--button {
+            text-align: -webkit-center;
+        }
+    }
+}

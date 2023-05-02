@@ -1,0 +1,103 @@
+<div class="profile">
+    <ng-template [ngIf]="isProfessionnal" [ngIfElse]="client">
+        <div class="profile__card">
+            <h1 class="text--title-page">
+                Professionnel
+            </h1>
+            <div class="profile__card--grouped">
+                <div>
+                    <p class="text--very-big">{{ professionalLabel() }}</p>
+                    <p>{{ user.firstName }} {{ user.lastName }}</p>
+                </div>
+                <div>
+                    <p>{{ user.telephon }}</p>
+                    <p>{{ user.email }}</p>
+                </div>
+            </div>
+            <div class="buttons profile__actions">
+                <button class="button button--with-edit-icon text--normal" (click)="launching('professional')">Professionnel</button>
+            </div>
+        </div>
+        <div class="profile__card">
+            <h1 class="text--title-page">
+                Pharmacie
+            </h1>
+            <div class="profile__card--grouped">
+                <div>
+                    <p class="text--very-big">{{ user.pharmacy?.name }}</p>
+                    <p>{{ user.pharmacy?.telephon }}</p>
+                    <p>{{ user.pharmacy?.email }}</p>
+                </div>
+                <div>
+                    <p class="text--very-big">Adresse principale</p>
+                    <p>{{ user.pharmacy?.address?.line }}</p>
+                    <p>{{ user.pharmacy?.address?.apartment }}</p>
+                    <p>{{ user.pharmacy?.address?.province }} {{ user.pharmacy?.address?.city }} {{ user.pharmacy?.address?.postalCode }}</p>
+                    <p>{{ user.pharmacy?.address?.country }}</p>
+                </div>
+            </div>
+            <div class="buttons profile__actions">
+                <button class="button button--with-edit-icon text--normal" (click)="launching('pharmacy')">Pharmacie</button>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #client>
+        <div class="profile__card">
+            <h1 class="text--title-page">
+                Informations
+            </h1>
+            <div class="profile__card--grouped">
+                <div>
+                    <p class="text--very-big">{{ user.firstName }} {{ user.lastName }}</p>
+                    <p>{{ user.telephon }}</p>
+                    <p>{{ user.email }}</p>
+                </div>
+                <div class="profile__card--address">
+                    <p class="text--very-big">Adresse principale</p>
+                    <p>{{ user.address.line }}</p>
+                    <p>{{ user.address.apartment }}</p>
+                    <p>{{ user.address.province }} {{ user.address.city }} {{ user.address.postalCode }}</p>
+                    <p>{{ user.address.country }}</p>
+                </div>
+            </div>
+            <div class="buttons profile__actions">
+                <button class="button button--with-edit-icon text--normal" (click)="launching('informations')">Informations</button>
+                <button class="button button--with-edit-icon text--normal" (click)="launching('address')">Adresse</button>
+            </div>
+        </div>
+        <div class="profile__card">
+            <h1 class="text--title-page">
+                Préférences de requêtes
+            </h1>
+            <div class="profile__card--grouped">
+                <div class="text--big">
+                    <p>Distance maximale à considérer : {{ user.maximumDistance }} km</p>
+                    <p>Localisation disponible : Oui</p>
+                </div>
+            </div>
+            <div class="buttons profile__actions">
+                <button class="button button--with-edit-icon text--normal" (click)="launching('preferences')">Préférences</button>
+            </div>
+        </div>
+    </ng-template>
+
+
+<ng-template [ngIf]="addressForm.isTriggered()">
+    <app-form [title]="'Addresse'" (OnSubmit)="editAddress($event)" [fields]="addressForm.fields" [action]="addressForm.action" (OnPartialAddressDemand)="getPartialAddress()" (OnCancel)="addressForm.reset()"></app-form>
+</ng-template>
+
+<ng-template [ngIf]="informationsForm.isTriggered()">
+    <app-form [title]="'Informations'" (OnSubmit)="editInformations($event)" [fields]="informationsForm.fields" [action]="informationsForm.action" (OnCancel)="informationsForm.reset()"></app-form>
+</ng-template>
+
+<ng-template [ngIf]="professionalForm.isTriggered()">
+    <app-form [title]="'Professionnel de la santé'" (OnSubmit)="editProfessionalInfos($event)" [fields]="professionalForm.fields" (OnCancel)="professionalForm.reset()" [action]="professionalForm.action"></app-form>
+</ng-template>
+
+<ng-template [ngIf]="preferencesForm.isTriggered()">
+    <app-form [title]="'Préférences de requêtes'" (OnSubmit)="editPreferences($event)" [fields]="preferencesForm.fields" (OnCancel)="preferencesForm.reset()" [action]="preferencesForm.action"></app-form>
+</ng-template>
+
+<ng-template [ngIf]="pharmacyForm.isTriggered()">
+    <app-form [title]="'Préférences de requêtes'" (OnSubmit)="editPharmacy($event)" [fields]="pharmacyForm.fields" (OnCancel)="pharmacyForm.reset()" [action]="pharmacyForm.action"></app-form>
+</ng-template>

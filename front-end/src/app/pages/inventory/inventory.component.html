@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="title">
+        <h1 class="text--title-page">{{ title }}</h1>
+        <app-search (onSearch)="search($event)"></app-search>
+    </div>
+    <div class="meds-list">
+        <app-card
+            *ngFor="let drug of drugs"
+            [drug] = "drug"
+            (OnRequest)="request($event)"
+        />
+    </div>
+</div>

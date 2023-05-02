@@ -1,0 +1,39 @@
+@import "../../../styles.scss";
+
+.profile {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: map-get($relations, friend);
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: map-get($relations, bff);
+  }
+
+  h1 {
+    display: flex;
+    gap: map-get($relations, bff);
+    border: 1px solid;
+    padding: map-get($relations, close-friend);
+  }
+
+  &__card {
+    box-sizing: border-box;
+    margin: auto;
+    padding: map-get($relations, friend);
+    width: 80%;
+    max-width: 1024px;
+    margin-bottom: map-get($relations, bff);
+    box-shadow: 5px 5px 11px -1px rgba(0,0,0,0.41);
+
+    &--grouped {
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      padding: map-get($relations, lover);
+
+    }
+  }
+}

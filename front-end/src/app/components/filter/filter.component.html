@@ -1,0 +1,35 @@
+<div class="filter">
+    <ng-container *ngIf="filter.isCheckbox(); then checkbox else list"/>
+
+    <ng-template #list>
+        <div class="dropdown">
+            <button class="dropdown__trigger text--normal">
+                <ng-container [ngTemplateOutlet]="title"></ng-container>
+                <ng-template [ngIf]="filter.valueHasBeenSelected()">: {{ filter.value }}</ng-template>
+                <img class="chevron icon--very-small" src="assets/images/chevron.svg">
+            </button>
+            <div class="dropdown__content">
+                <span
+                    #valeurSelectionnee
+                    *ngFor="let value of values"
+                    (click)="exportValue(valeurSelectionnee.innerText)"
+                    [ngClass]="{'actif': value === filter.value}"
+                >
+                    {{ value }}
+                </span>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #checkbox>
+        <input type="checkbox" name="checkbox" class="filter__checkbox" #box (change)="exportValue(box.checked)">
+        <label for="checkbox">
+            <ng-container [ngTemplateOutlet]="title"></ng-container>
+        </label>
+    </ng-template>
+
+    <ng-template #title>
+        <ng-content/>
+    </ng-template>
+</div>
+ 

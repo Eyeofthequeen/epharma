@@ -1,0 +1,10 @@
+<nav>
+    <a
+        *ngFor="let page of pages | keyvalue"
+        class="tab"
+        [ngClass]="{'tab--selected': selectedTab(page.key)}"
+        (click)="goToPath(page.key)"
+    >
+        {{ page.value }}
+    </a>
+</nav>

@@ -1,0 +1,17 @@
+<div class="title">
+  <h1 class="text--title-page">Alertes</h1>
+</div>
+<div class="container-sub-title">
+  <app-filters>
+      <app-filter (onFilter)="addFilter($event)" [values]="expirations">Expiration</app-filter>
+      <app-filter (onFilter)="addFilter($event)" [values]="types">Type</app-filter>
+  </app-filters>
+</div>
+<app-table
+  (onFilter)="handleFilter($event)"
+  (notifierAction)="archive($event)"
+  [keysToIgnore]="keysToIgnore"
+  [headers]="headers"
+  [objets]="list"
+  [action]="action"
+/>

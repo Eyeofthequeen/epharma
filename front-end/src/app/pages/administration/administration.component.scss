@@ -1,0 +1,7 @@
+@import "../../../styles.scss";
+
+.page {
+    width: 80%;
+    margin: auto;
+    margin-top: map-get($relations, acquaintance);
+}

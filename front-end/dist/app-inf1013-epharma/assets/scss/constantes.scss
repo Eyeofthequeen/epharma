@@ -1,0 +1,25 @@
+$colorpalet: (
+    "noir": #2F2F2F,
+    "gris": #585858,
+    "gris-pale": #EAEAEA,
+    "rouge-pale": #F72D1C50,
+    "vert-pale": #31DC3450
+);
+
+$relations: (
+  "lover": 4px, 
+  "bff": 8px,
+  "close-friend": 16px,
+  "close-friend-ish": 22px,
+  "friend": 32px,
+  "acquaintance": 64px,
+  "distant-acquaintance": 72px,
+  "stranger": 128px
+);
+
+$screen: (
+  "mobile": 480px,
+  "tablet": 768px,
+  "petit-ecran": 1124px,
+  "desktop": 1200px
+)

@@ -1,0 +1,20 @@
+<div class="title">
+    <h1 class="text--title-page">Employés</h1>
+    <app-search (onSearch)="search($event)"></app-search>
+</div>
+
+<div class="buttons">
+    <button (click)="launching()" class="button button--with-add-icon text--normal">Employé</button>
+</div>
+
+<app-table
+    [headers]="headers"
+    [objets]="list"
+    [keysToIgnore]="keysToIgnore"
+    (onFilter)="handleFilter($event)"
+    (notifierAction)="editing($event)"
+/>
+
+<ng-template [ngIf]="userForm.isTriggered()">
+    <app-form [title]="'Ajouter un usager'" [fields]="userForm.fields" [action]="userForm.action" (OnSubmit)="save($event)" (OnCancel)="userForm.reset()"></app-form>
+</ng-template>

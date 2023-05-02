@@ -1,0 +1,6 @@
+<div class="search">
+    <input class="search__bar" type="text" placeholder="Recherche..." (keydown.enter)="lancerRecherche(search.value)" #search>
+    <button class="search__button" (click)="lancerRecherche(search.value)">
+        <img class="icon--small" src="/assets/images/search.svg" alt="search">
+    </button>
+</div>

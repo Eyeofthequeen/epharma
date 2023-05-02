@@ -1,0 +1,18 @@
+<table class="tableau">
+    <tr class="tableau__headers">
+        <th class="tableau__entete" *ngFor="let entete of headers; let index = index" (click)="exportValue(index)">
+            {{ entete }}
+            <ng-template [ngIf]="entete !== ''">
+                <img class="chevron icon--tres-small" src="assets/images/chevron.svg" [ngClass]="{'chevron--actif': filter.isSelected(entete)}">
+            </ng-template>
+        </th>
+    </tr>
+    <tr class="tableau__cellules" *ngFor="let obj of all();">
+        <td class="tableau__cellule" *ngFor="let description of convertToList(obj)">
+            {{ handleValue(description) }}
+        </td>
+        <td class="tableau__cellule--button">
+            <button (click)="notifier(obj)" class="button text--normal">{{ action }}</button>
+        </td>
+    </tr>
+</table>

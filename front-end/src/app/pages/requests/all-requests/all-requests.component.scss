@@ -1,0 +1,19 @@
+@import '/src/styles.scss';
+
+.container-sub-title {
+    display: flex;
+    justify-content: flex-end;
+    gap: map-get($relations, bff);
+}
+
+.notice {
+    border: 1px solid;
+    background-color: map-get($colorpalet, gris-pale);
+    padding: 1rem;
+    max-width: 400px;
+
+    a {
+        color: initial;
+        text-decoration: underline;
+    }
+}

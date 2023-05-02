@@ -1,0 +1,29 @@
+<div class="title">
+    <h1 class="text--title-page">Requêtes</h1>
+</div>
+
+<app-table
+  [headers]="headers"
+  [objets]="list"
+  [action]="consult"
+  [keysToIgnore]="keysToIgnore"
+  (onFilter)="handleFilter($event)"
+  (notifierAction)="consultingRequest($event)"
+/>
+
+<ng-template  [ngIf]="queryForm.isTriggered()">
+  <app-form [title]="'Demande de médicament'" [fields]="queryForm.fields" [action]="queryForm.action" (OnSubmit)="save($event)" (OnCancel)="queryForm.reset()">
+    <div class="drug-request">
+      <div class="drug-request__drug-infos">
+          <p class="text--big">{{ currentDrugRequest?.drug?.name }}</p>
+          <p>{{ currentDrugRequest?.drug?.type }} - {{ currentDrugRequest?.drug?.concentration }}</p>
+          <p>x{{ currentDrugRequest?.quantity }}</p>
+      </div>
+      <div>
+        <p class="drug-request--align-end">{{ currentDrugRequest?.client?.firstName }} {{ currentDrugRequest?.client?.lastName }}</p>
+        <p class="drug-request--align-end">{{ currentDrugRequest?.client?.email }}</p>
+        <p class="drug-request--align-end">{{ currentDrugRequest?.client?.telephon }}</p>
+      </div>
+    </div>
+  </app-form>
+</ng-template>

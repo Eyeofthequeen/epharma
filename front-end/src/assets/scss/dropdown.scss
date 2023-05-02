@@ -1,0 +1,78 @@
+@import '/src/assets/scss/constantes.scss';
+
+
+.dropdown {
+    position: relative;
+  
+    &__trigger {
+        background: none;
+        display: flex;
+        align-items: center;
+        gap: map-get($relations, bff);
+        appearance: none;
+        border: solid 1px map-get($colorpalet, noir);
+        padding: map-get($relations, bff) map-get($relations, bff);
+    }
+  
+    &__content {
+        display: none;
+        min-width: 160px;
+        position: absolute;
+        padding: map-get($relations, bff) map-get($relations, bff);
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        background-color: white;
+        color: map-get($colorpalet, noir);
+        z-index: 1;
+  
+        &--force-position-left {
+          top: 100%;
+          right: 0;
+        }
+  
+        &--triangle-decorator::before {
+              content: "";
+              position: absolute;
+              bottom: 100%;
+              left: 50%;
+              margin-left: -5px;
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 10px 10px 0 0;
+              border-color: white transparent transparent transparent;
+              rotate: (180deg);
+        }
+  
+        span {
+            display: block;
+            padding: map-get($relations, bff) map-get($relations, bff);
+            cursor: pointer;
+  
+            &:hover {
+                color: map-get($colorpalet, noir);
+                background-color: map-get($colorpalet, gris-pale);
+            }
+        }
+
+        .tab {
+            padding: map-get($relations, close-friend) map-get($relations, bff);
+            display: flex;
+            gap: map-get($relations, close-friend);
+            align-items: center;
+        }
+
+        .actif {
+            color: white;
+            background-color: map-get($colorpalet, gris);
+        }
+    }
+  
+    &:hover &__content {
+        display: block;
+    }
+  
+    &:hover .chevron {
+        height: 8px;
+        transform: rotate(180deg);
+    }
+  }  

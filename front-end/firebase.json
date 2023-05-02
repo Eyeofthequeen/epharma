@@ -1,0 +1,15 @@
+{
+  "hosting": {
+    "site": "e-pharma-inf1013-davydov",
+    "public": "dist/app-inf1013-epharma",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }]
+  }
+}

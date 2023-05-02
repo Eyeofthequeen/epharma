@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="id-form">
+        <div class="id-form__left">
+            <img class="compagny__logo--big" src="/assets/images/logo.svg" alt="logo">
+            <p class="compagny__name">E-Pharma</p>
+            <p class="compagny__slogan">In pharma we trusth.</p>
+        </div>
+
+        <div class="id-form__right">
+            <app-identification [errors]="errors" [successes]="successes" [hasAccount]="false" (onRegister)="register($event)"/>
+        </div>
+    </div>
+</div>

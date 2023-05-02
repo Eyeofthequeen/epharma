@@ -1,0 +1,21 @@
+@import "../../../styles.scss";
+
+nav {
+    font-family: 'Mulish';
+    height: 50px;
+    color: white;
+    background-color: map-get($colorpalet, gris);
+    display: flex;
+    align-items: center;
+    padding: 0 map-get($relations, acquaintance);
+    gap: map-get($relations, distant-acquaintance);
+
+    .tab {
+        cursor: pointer;
+
+        &--selected {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+}

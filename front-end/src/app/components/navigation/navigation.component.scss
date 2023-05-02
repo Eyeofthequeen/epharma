@@ -1,0 +1,96 @@
+@import "../../../styles.scss";
+
+.navigation {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    background-color: map-get($colorpalet, noir);
+    justify-content: space-between;
+    align-items: center;
+
+    &__logo {
+        margin-left: map-get($relations, friend);
+        display: flex;
+    }
+
+    &__onglets, &__usager {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    &__onglet {
+        background-color: #D9D9D915;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        
+        &--icone {
+            cursor: pointer;
+            background-color: none;
+            margin: 0 map-get($relations, bff);
+        }
+    }
+    
+    &__usager, &__onglet {
+        color: white;
+        display: flex;
+        padding: 0 map-get($relations, close-friend);
+        margin: 0 map-get($relations, bff);
+    }
+    
+    &__logo, &__onglet {
+        cursor: pointer;
+        gap: map-get($relations, bff);
+    }
+
+    .deroulant {
+        position: relative;
+
+        &__trigger {
+            cursor: pointer;
+            display: flex;
+            gap: map-get($relations, bff);
+        }
+
+        &__content {
+            display: none;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            color: map-get($colorpalet, noir);
+            background-color: white;
+            position: absolute;
+            top: 100%;
+            right: 0;
+        }
+
+        &__content::before {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 10px 0 0;
+            border-color: white transparent transparent transparent;
+            rotate: (180deg);
+        }
+
+        &__onglet {
+            display: block;
+            height: max-content;
+            padding: map-get($relations, close-friend) map-get($relations, bff);
+
+            &:hover {
+                cursor: pointer;
+                background-color: map-get($colorpalet, gris-pale);
+            }
+        }
+
+        &:hover .deroulant__content {
+            display: block;
+        }
+    }
+}

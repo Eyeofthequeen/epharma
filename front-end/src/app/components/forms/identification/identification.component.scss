@@ -1,0 +1,12 @@
+@import "/src/styles.scss";
+
+.notice {
+  display: block;
+  margin-top: map-get($relations, friend);
+
+  &__link {
+    margin-left: map-get($relations, bff);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

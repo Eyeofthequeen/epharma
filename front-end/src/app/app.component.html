@@ -1,0 +1,14 @@
+<app-navigation></app-navigation>
+<app-global-alert
+    *ngFor="let alert of alerts"
+    [alert]="alert"
+    (notifierSuppression)="removeAlert($event)"
+/>
+<div class="body">
+    <router-outlet></router-outlet>
+</div>
+<!-- Permet le routing -->
+
+<footer>
+    <strong>© GDev. &nbsp;</strong> Pour toute question, écrivez-nous.
+</footer>

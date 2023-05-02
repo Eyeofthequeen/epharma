@@ -1,0 +1,38 @@
+@import '/src/assets/scss/constantes.scss';
+
+.button {
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto';
+  appearance: none;
+  cursor: pointer;
+  border: none;
+  background-color: map-get($colorpalet, noir);
+  color: white;
+  padding: map-get($relations, close-friend) map-get($relations, close-friend-ish);
+  gap: map-get($relations, bff);
+
+  &:hover {
+    background-color: #474747;
+  }
+
+  &--deactivated {
+    background-color: #474747;
+    cursor: initial;
+  }
+
+  &--with-add-icon:before {
+    content: "";
+    background: url("../images/add.svg") no-repeat;
+    width: 20px;
+    height: 20px;
+  }
+
+  &--with-edit-icon:before {
+    content: "";
+    background: url("../images/edit.svg") no-repeat;
+    width: 20px;
+    height: 20px;
+    background-size: 20px;
+  }
+}

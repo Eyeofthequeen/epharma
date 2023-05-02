@@ -1,0 +1,24 @@
+@import "/src/styles.scss";
+
+.base-form {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000099;
+
+    .invisible {
+        display: none;
+    }
+
+    .form {
+        background-color: white;
+        padding:  map-get($relations, friend);
+        max-width: 628px;
+        min-width: 320px;
+    }
+}

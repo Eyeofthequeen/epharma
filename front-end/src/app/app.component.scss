@@ -1,0 +1,30 @@
+@import "../styles.scss";
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    font-family: 'Mulish';
+    display: flex;
+    justify-content: flex-end;
+    padding: map-get($relations, close-friend) map-get($relations, friend);
+    color: white;
+    background-color: map-get($colorpalet, noir);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 5rem;
+}
+
+.alerts {
+    position: fixed;
+}

@@ -1,0 +1,7 @@
+@import "../../../styles.scss";
+
+.filters {
+    display: flex;
+    align-items: center;
+    gap: map-get($relations, friend);
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+ 
+    <!--
+        L'écriture des tables ont été fait dans le gestionnaire de postgresql. Dans le but de respecter les exigences du jalon3
+        liquibase est configuré et fonctionne correctement. Une sauvegarde a été fait dans la BD avec cette requête.
+    -->
+    <changeSet id="create-responses-table" author="Miriam">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="responses"/>
+            </not>
+        </preConditions>
+        <createTable tableName="responses">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" primaryKeyName="responses_pkey" nullable="false"/>
+            </column>
+            <column name="has_generic" type="boolean"/>
+            <column name="availability" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="numeric(10,2)"/>
+            <column name="comment" type="text"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

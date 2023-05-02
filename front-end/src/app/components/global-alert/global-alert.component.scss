@@ -1,0 +1,41 @@
+@import '/src/assets/scss/constantes.scss';
+
+.alert {
+    display: inline-flex;
+    width: 100%;
+    max-width: 900px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    position: fixed;
+    transition: 2s;
+    left: -100%;
+    background-color: white;
+    
+    &--active {
+        left: 0;
+    }
+
+    &__boite {
+        width: 100%;
+        display: flex;
+        align-self: center;
+    }
+
+    img {
+        padding: map-get($relations, friend);
+    }
+
+    &__fermeture {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-self: flex-end;
+        justify-content: center;
+        color: white;
+        background-color: map-get($colorpalet, noir);
+        height: 30px;
+        width: 30px;
+        margin-right: map-get($relations, friend);
+    }
+}

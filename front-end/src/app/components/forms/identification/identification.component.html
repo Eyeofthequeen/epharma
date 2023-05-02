@@ -1,0 +1,51 @@
+<div class="id-form__errors" *ngIf="errors.length > 0">
+    <p *ngFor="let error of errors">{{ error }}</p>
+</div>
+<div class="id-form__successes" *ngIf="successes.length > 0">
+    <p *ngFor="let success of successes">{{ success }}</p>
+</div>
+
+<ng-container *ngIf="hasAccount; else registration">
+    <form [formGroup]="form" class="form form--vertical">
+        <h1 class="form__title">Connexion</h1>
+        <input class="text--normal" placeholder="Courriel" id="email" type="text" formControlName="email">
+        <div>
+            <input class="text--normal" placeholder="Mot de passe" id="password" type="password" formControlName="password">
+            <span class="forgot-password text--small">Mot de passe oublié</span>
+        </div>
+
+        <button
+            (click)="login()"
+            [disabled]="!form.valid"
+            [ngClass]="{'button--deactivated': !form.valid}"
+            class="button text--normal"
+            type="submit"
+        >
+            Connexion
+        </button>
+    </form>
+    <span class="notice text--small">Vous n'avez pas de compte? <a (click)="goToPath('register')" class="notice__link">S'inscrire</a></span>
+</ng-container>
+
+<ng-template #registration>
+    <form [formGroup]="form" class="form form--vertical">
+        <h1 class="form__title">Inscription</h1>
+        <div class="group-checkbox" formGroupName="type">
+            <b>Je suis...</b>
+            <label><input type="checkbox" #checkclient (change)="checkpharma.checked = false; updateCheckboxes(checkclient, checkpharma)" formControlName="client">Client</label>
+            <label><input type="checkbox" #checkpharma (change)="checkclient.checked = false; updateCheckboxes(checkclient, checkpharma)" formControlName="pharmacien">Pharmacien</label>
+        </div>
+        <input class="text--normal" placeholder="Courriel" id="email" type="text" formControlName="email">
+        <input class="text--normal" placeholder="Mot de passe" id="password" type="text" formControlName="password">
+        <button
+            (click)="register()"
+            [disabled]="!form.valid"
+            [ngClass]="{'button--deactivated': !form.valid}"
+            class="button text--normal"
+            type="submit"
+            >
+            S'inscrire
+        </button>
+    </form>
+    <span class="notice text--small">Vous avez déjà un compte? <a (click)="goToPath('login')" class="notice__link">Connexion</a></span>
+</ng-template>

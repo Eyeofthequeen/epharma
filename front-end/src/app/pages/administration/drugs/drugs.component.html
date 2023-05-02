@@ -1,0 +1,30 @@
+<div class="title">
+    <h1 class="text--title-page">Médicaments</h1>
+    <app-search (onSearch)="search($event)"></app-search>
+</div>
+
+<div class="container-sub-title">
+    <app-filters>
+        <app-filter (onFilter)="addFilter($event)">Grouper par lot</app-filter>
+    </app-filters>
+
+    <div class="buttons">
+        <button (click)="launching('lot')" class="button button--with-add-icon text--normal">Lot</button>
+        <button (click)="launching('med')" class="button button--with-add-icon text--normal">Médicament</button>
+    </div>
+</div>
+
+<ng-template [ngIf]="drugForm.isTriggered()">
+    <app-form [title]="drugForm.action + ' un médicament'" [fields]="drugForm.fields" [action]="drugForm.action" (OnSubmit)="save($event)" (OnCancel)="drugForm.reset()"></app-form>
+</ng-template>
+<ng-template [ngIf]="lotForm.isTriggered()">
+    <app-form [title]="lotForm.action + ' un lot'" [fields]="lotForm.fields" [action]="lotForm.action" (OnSubmit)="save($event)" (OnCancel)="lotForm.reset()"></app-form>
+</ng-template>
+
+<app-table
+    [headers]="headers"
+    [objets]="list"
+    [keysToIgnore]="keysToIgnore"
+    (onFilter)="handleFilter($event)"
+    (notifierAction)="editing($event)"
+/>

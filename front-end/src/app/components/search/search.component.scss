@@ -1,0 +1,28 @@
+@import "../../../styles.scss";
+
+.search {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+
+    &__bar {
+        height: 2.2rem;
+        border: 2px solid map-get($colorpalet, noir);
+        border-radius: 5px;
+        min-width: 650px;
+        font-family: Arial;
+        text-indent: 1rem;
+
+        @media only screen and (max-width: map-get($screen, tablet)) {
+            min-width: 300px;
+        }
+    }
+
+    &__button {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        right: 0;
+    }
+}

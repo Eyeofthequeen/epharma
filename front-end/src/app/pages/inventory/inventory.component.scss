@@ -1,0 +1,29 @@
+@import "../../../styles.scss";
+
+.meds-list {
+    display: grid;
+    grid-template-columns: max-content max-content max-content;
+    justify-content: center;
+
+    @media only screen and (max-width: map-get($screen, petit-ecran)) {
+        grid-template-columns: max-content max-content;
+    }
+
+    @media only screen and (max-width: map-get($screen, tablet)) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: map-get($relations, acquaintance);
+    margin-bottom: map-get($relations, acquaintance);
+
+    @media only screen and (max-width: map-get($screen, petit-ecran)) {
+        flex-direction: column;
+    }
+}

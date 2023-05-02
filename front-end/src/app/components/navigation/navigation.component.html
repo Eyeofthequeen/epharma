@@ -1,0 +1,40 @@
+<nav class="navigation">
+    <div class="navigation__logo" (click)="goToPath('')">
+        <p class="compagny__name">E-Pharma</p>
+        <img class="compagny__logo--small" src="/assets/images/logo.svg" alt="logo">
+    </div>
+    <div class="navigation__onglets" *ngIf="isLoggedIn(); else connect">
+            <a class="navigation__onglet--icone" (click)="goToPath('')">
+                <img class="icon--normal" src="/assets/images/home.svg" alt="logo">
+            </a>
+            <a class="navigation__onglet" *ngIf="isAdmin(); else client" (click)="goToPath('administration')">
+                Administration
+            </a>
+            <ng-template #client>
+                <a class="navigation__onglet" (click)="goToPath('requests')">
+                    Requêtes
+                </a>
+            </ng-template>
+            <div class="navigation__usager dropdown">
+                <div class="dropdown__trigger">
+                    <p>{{ username() }}</p>
+                    <img class="icon--small" src="/assets/images/account.svg" alt="logo">
+                </div>
+                <div class="dropdown__content dropdown__content--force-position-left dropdown__content--triangle-decorator">
+                    <span class="tab" (click)="goToPath('profile')">Profil</span>
+                    <span class="tab" (click)="logout()">
+                        Déconnexion
+                        <img class="icon--small" src="/assets/images/exit.svg" alt="logo">
+                    </span>
+                </div>
+            </div>
+    </div>
+    <ng-template #connect>
+        <div class="navigation__onglets">
+            <a class="navigation__onglet" (click)="goToPath('login')">
+                Connexion
+                <img class="icon--small" src="/assets/images/connexion.svg" alt="logo">
+            </a>
+        </div>
+    </ng-template>
+</nav>
